@@ -1,6 +1,6 @@
 # Blueprint CI/CD cho RAG và guardrails
 
-Nhóm: SoloLeveling. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Đây là đề xuất CI/CD, chưa có bằng chứng workflow được triển khai/chạy.
 Nguồn: `artifacts/ragas_50q.json`, `judge_results.json`, `guard_results.json`.
 Timestamp C UTC: 2026-10-12T08:17:29.017518+00:00; guard models: gpt-4o-mini.

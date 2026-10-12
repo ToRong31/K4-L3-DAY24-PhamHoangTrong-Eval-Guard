@@ -1,6 +1,6 @@
 # Đánh giá LLM Judge Phase B
 
-Nhóm: SoloLeveling. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Nguồn: `artifacts/judge_results.json`; timestamp UTC: 2026-10-12T07:50:34.676555+00:00.
 Generation: openai/gpt-4o-mini; Judge: openai/gpt-4o-mini.
 

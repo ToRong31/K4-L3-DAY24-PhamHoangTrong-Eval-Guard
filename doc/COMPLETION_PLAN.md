@@ -9,7 +9,7 @@ Người thực hiện: Phạm Hoàng Trọng — 2A202602765. Lệnh live do ng
 | CP1 / Tasks 1–4 | Phase A artifact hợp lệ, 50 rows/4 metrics, 10 bottom rows, matrix/means, evaluator models tách riêng; report điền từ JSON | Giữ A hiện tại. Cải tiến chất lượng retrieval là đề xuất, chưa thực hiện |
 | CP2 / Tasks 5–8 | B đủ 5 cặp/10 lượt và 10 binary judgments đúng nguồn; kappa/bias hợp lệ; report điền từ JSON | Validation reply malformed được siết để không tạo scores giả; reply cũ hợp lệ không đổi nên không cần chạy B lại |
 | CP3 / Tasks 9a–12 | C cuối 08:17:29 UTC đạt attacks 20/20, clean 8/8, outputs 4/4; 20 timed samples, 2 warm-up. Input P95 850.107065 ms được báo đúng | Đã hoàn tất bằng chứng bắt buộc; không cần chạy C lại |
-| CP4 / Task 13 | TEAM một người, nhóm SoloLeveling; báo cáo A/B/blueprint theo artifacts hiện tại; checker và 102 tests pass. Source/artifacts đã push ở 72dfce0 | Commit/push cập nhật Markdown cuối, đối chiếu tên repo/deadline coach, chốt SHA rồi gửi link |
+| CP4 / Task 13 | TEAM một người, nhóm PhamHoangTrong; báo cáo A/B/blueprint theo artifacts hiện tại; checker và 102 tests pass. Commit 1d04417 đã public và chứa source/evidence | Commit/push đổi tên nhóm và cập nhật Markdown, chốt SHA cuối rồi gửi link |
 
 ## Thứ tự thực hiện tiếp
 
@@ -17,7 +17,7 @@ Người thực hiện: Phạm Hoàng Trọng — 2A202602765. Lệnh live do ng
 2. Báo cáo đã cập nhật theo batch C cuối; dùng `scripts/update_reports.py` chỉ khi artifacts đổi.
 3. Chạy `scripts/check_lab.py --with-tests` để kiểm tra bản cuối, không gọi API.
 4. Commit/push source, bốn artifacts, TEAM và reports; lấy SHA bằng `git rev-parse HEAD` và mở đúng commit trên GitHub trước khi gửi.
-5. SUBMISSION yêu cầu tên `K4-L3-DAY24-TenNhom-Eval-Guard`; tên theo nhóm hiện tại là `K4-L3-DAY24-SoloLeveling-Eval-Guard`. Repo hiện dùng tên khác; đối chiếu hướng dẫn coach/đổi tên theo mẫu trước nộp.
+5. SUBMISSION yêu cầu tên `K4-L3-DAY24-TenNhom-Eval-Guard`; tên theo nhóm hiện tại là `K4-L3-DAY24-PhamHoangTrong-Eval-Guard`. Repo hiện dùng tên khác; đối chiếu hướng dẫn coach/đổi tên theo mẫu trước nộp.
 
 Không cần chạy lại setup/A/B khi chỉ đổi guard. Nếu sinh lại answers thì A/B phải chạy lại vì nguồn answer/candidate A đổi.
 Không chạy integration live thêm sau batch C để tránh trả phí lặp lại.
@@ -28,7 +28,7 @@ Ngưỡng bắt buộc C là 15/20, bonus 18/20 vẫn yêu cầu clean 8/8. Budg
 CI faithfulness ≥0.75/avg ≥0.65 là đề xuất blueprint, không phải quality gate đã triển khai.
 Pipeline hiện có retrieval/generation yếu ở multi-hop; báo cáo nêu bằng chứng và hướng cải tiến, không đổi corpus/test để làm eval dễ hơn.
 Cache resume answers chưa gắn fingerprint corpus/provider đầy đủ: nếu thay corpus/model/provider/code, dùng `--refresh-cache` thay vì checkpoint cũ.
-Deadline trong README và tài liệu nộp bài có mốc khác nhau; dùng thông báo coach, chưa tự chốt deadline.
+Deadline theo hướng dẫn nộp bài người thực hiện cung cấp: 11:59 AM 13/10/2026, UTC+07:00; áp dụng điều chỉnh của key coach nếu có.
 CP3 đã đạt qua batch live cuối và checker xác nhận; thời gian vượt target không bị sửa để tạo kết quả đạt giả.
 
 ## Kết quả kiểm chứng sau audit

@@ -1,19 +1,19 @@
 # Nhóm thực hiện K4 Track 3B
 
-Tên nhóm: SoloLeveling
+Tên nhóm: PhamHoangTrong
 
 Repo chung: https://github.com/ToRong31/K4-Track-3B-Day24-PhamHoangTrong-2A202602765-EvalGuard
 
 Trưởng nhóm/người thực hiện và nộp: Phạm Hoàng Trọng — 2A202602765.
 
 Ngày thực nghiệm trong artifacts: 12/10/2026, Asia/Ho_Chi_Minh (UTC+07:00).
-Deadline áp dụng: chưa có thông báo riêng của coach trong phiên làm việc này.
-ASSIGNMENT/SUBMISSION/RULES nêu mặc định 23:59 ngày lab; README nêu một mốc khác.
-Cần đối chiếu thông báo coach trước gửi bài, không tự xác nhận deadline từ hai mốc mâu thuẫn.
+Deadline theo hướng dẫn nộp bài người thực hiện cung cấp: 11:59 AM ngày 13/10/2026,
+Asia/Ho_Chi_Minh (UTC+07:00). Áp dụng điều chỉnh của key coach nếu có;
+kênh nộp và chính sách AI lấy từ thông báo lớp.
 
 Commit dùng để chấm: bản cuối trên nhánh `main` sau khi commit/push toàn bộ source, artifacts và báo cáo này.
-Commit source/artifacts đã kiểm tra trên remote: `72dfce0db5b59fea2353a207324f6083311f36e5`.
-Các cập nhật Markdown cuối cần được commit/push thêm; chưa tuyên bố bản cập nhật local này đã lên GitHub.
+Commit source/evidence đã kiểm tra trên remote và mở public thành công: `1d04417eb82e229f23709780d23522b5938368bc`.
+Đổi tên nhóm và cập nhật thông tin nộp sau commit này chỉ thay Markdown; cần commit/push các cập nhật mới trước gửi link.
 Khi gửi link, đính kèm SHA lấy bằng `git rev-parse HEAD` sau khi commit và kiểm tra trên GitHub.
 
 ## Thành viên và phân công

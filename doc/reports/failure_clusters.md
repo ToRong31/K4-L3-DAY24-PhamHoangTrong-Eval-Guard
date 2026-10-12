@@ -1,6 +1,6 @@
 # Phân tích lỗi Phase A
 
-Nhóm: SoloLeveling. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Nguồn: `artifacts/ragas_50q.json`; timestamp UTC: 2026-10-12T07:48:53.908454+00:00.
 50 answers gồm 50 LLM và 0 extractive fallback.
 Generation: openai/gpt-4o-mini. Evaluator: BAAI/bge-m3, openai/gpt-4o-mini.
