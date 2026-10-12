@@ -18,6 +18,20 @@ def test_pairwise_uses_json_judge(openai_client):
     assert call["response_format"] == {"type":"json_object"}
 
 
+@pytest.mark.parametrize("payload", [
+    {"winner": "invalid", "reasoning": "explanation", "scores": {"A": .5, "B": .5}},
+    {"winner": "A", "reasoning": "", "scores": {"A": .9, "B": .2}},
+    {"winner": "A", "reasoning": "explanation", "scores": {"A": 1.2, "B": .2}},
+    {"winner": "A", "reasoning": "explanation", "scores": {"A": .9}},
+    {"winner": "A", "reasoning": "explanation", "scores": {"A": True, "B": .2}},
+])
+def test_malformed_pairwise_reply_is_not_fabricated_as_valid(openai_client, payload):
+    import json
+    openai_client.chat.completions.create.return_value.choices[0].message.content = json.dumps(payload)
+    with pytest.raises(ValueError):
+        phase.pairwise_judge(Q, A, B, reference=REF)
+
+
 @pytest.mark.parametrize("second_raw,expected,consistent", [("B","A",True),("A","tie",False)])
 def test_swap_conversion_and_calls(monkeypatch,second_raw,expected,consistent):
     mocked = Mock(side_effect=[

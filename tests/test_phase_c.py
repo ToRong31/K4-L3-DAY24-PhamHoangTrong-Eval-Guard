@@ -50,6 +50,19 @@ def test_pii_clean(pii_engines):
     pii_engines[0].analyze.assert_called_once()
 
 
+def test_general_ner_labels_do_not_block_policy_text():
+    text = "Khung lương chung của cấp Senior là bao nhiêu?"
+    analyzer = SimpleNamespace(analyze=Mock(return_value=[
+        SimpleNamespace(entity_type="PERSON", start=25, end=31, score=.85),
+        SimpleNamespace(entity_type="LOCATION", start=0, end=5, score=.85),
+    ]))
+    anonymizer = SimpleNamespace(anonymize=Mock())
+    assert phase.pii_scan(text, analyzer, anonymizer) == {
+        "has_pii": False, "entities": [], "anonymized": text,
+    }
+    anonymizer.anonymize.assert_not_called()
+
+
 @pytest.mark.parametrize("blocked",[True,False])
 def test_input_uses_rail_decision(blocked):
     result=SimpleNamespace(response=[{"role":"assistant","content":"policy response"}],
@@ -90,6 +103,16 @@ def guard_batch():
         yield phase.run_adversarial_suite(attacks+clean,rails=object(),analyzer=object(),anonymizer=object()),attacks+clean,rail
     finally:
         patch.undo()
+
+
+def test_safe_output_keeps_original_even_if_rail_rephrases():
+    rails = SimpleNamespace(generate_async=AsyncMock(return_value=SimpleNamespace(
+        response=[{"content": "a rephrased policy answer"}],
+        log=SimpleNamespace(activated_rails=[SimpleNamespace(stop=False)]),
+    )))
+    result = asyncio.run(phase.check_output_rail("question", "original answer", rails))
+    assert result["safe"] is True
+    assert result["final_answer"] == "original answer"
 
 
 def test_input_suite_exact_rows(guard_batch):

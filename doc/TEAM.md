@@ -1,50 +1,52 @@
 # Nhóm thực hiện K4 Track 3B
 
-Tên nhóm: {{Tên nhóm}}
+Tên nhóm: SoloLeveling
 
-Repo chung: {{Link repo}}
+Repo chung: https://github.com/ToRong31/K4-Track-3B-Day24-PhamHoangTrong-2A202602765-EvalGuard
 
-Trưởng nhóm/người nộp: {{Họ tên và MSSV}}
+Trưởng nhóm/người thực hiện và nộp: Phạm Hoàng Trọng — 2A202602765.
 
-Ngày lab/deadline áp dụng: {{Ngày giờ theo thông báo lớp}} — Asia/Ho_Chi_Minh (UTC+07:00)
+Ngày thực nghiệm trong artifacts: 12/10/2026, Asia/Ho_Chi_Minh (UTC+07:00).
+Deadline áp dụng: chưa có thông báo riêng của coach trong phiên làm việc này.
+ASSIGNMENT/SUBMISSION/RULES nêu mặc định 23:59 ngày lab; README nêu một mốc khác.
+Cần đối chiếu thông báo coach trước gửi bài, không tự xác nhận deadline từ hai mốc mâu thuẫn.
 
-Commit dùng để chấm: {{Commit SHA}}
-
-Mỗi nhóm nộp một repo. Điền đủ thành viên và một mục INDIVIDUAL cho từng người.
-Thêm/xóa rows để khớp nhóm thật; mẫu ba rows không ép nhóm phải có ba người.
+Commit dùng để chấm: chưa chốt vì CP3 còn cần chạy lại. Cập nhật SHA của bản cuối sau khi kiểm tra và commit, trước khi gửi link.
 
 ## Thành viên và phân công
 
-| STT | Họ và tên | MSSV | Vai trò / công việc thật | Bằng chứng |
-|---|---|---|---|---|
-| 1 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
-| 2 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
-| 3 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
+| STT | Họ và tên | MSSV | Vai trò / công việc thực tế | Bằng chứng |
+| --- | --- | --- | --- | --- |
+| 1 | Phạm Hoàng Trọng | 2A202602765 | Tích hợp module Day 18, chuẩn bị môi trường/Qdrant, chạy setup và batch A/B/C, kiểm tra kết quả; dùng AI hỗ trợ implement/debug và soạn báo cáo | Source m1–m5/phase A–C, bốn JSON trong artifacts, ba báo cáo và lịch sử Git bản cuối |
 
-Người tích hợp/chạy batch/nộp link: {{Họ tên, công việc và bằng chứng}}.
+Người tích hợp/chạy batch/nộp link: Phạm Hoàng Trọng. Lệnh live được người thực hiện chạy trực tiếp; AI không tạo số đo giả.
 
-## Môi trường và chuẩn bị trước lớp
+## Môi trường và chuẩn bị
 
-OS/Python/compiler: {{Phiên bản thực tế}}.
-Virtualenv/dependencies/imports: {{Lệnh và kết quả}}.
-Models/Qdrant/50 answers đã chuẩn bị: {{Bằng chứng và giới hạn/fallback}}.
-Nếu cài full NeMo chưa thành công, ghi lỗi thực tế; không dùng unit test pass
-hoặc pip resolve để khẳng định runtime đã chạy.
+Windows, Python 3.11.9 trong `.venv`. Phiên bản compiler C++ cài trên máy chưa kiểm kê riêng;
+không suy từ dòng MSC của interpreter thành bằng chứng cài Build Tools.
+`python -m pip check` trả `No broken requirements found` trong lần audit.
+Unit tests offline đã pass; kết quả cụ thể ghi trong kế hoạch hoàn thành, không thay bằng chứng runtime thật.
+Qdrant khởi chạy bằng Docker Compose; pipeline đã sinh đủ 50 answers.
+Generation/evaluator/judge/guard IDs và timestamps lấy từ từng JSON, không gộp thành một model chung.
+BGE-M3 embedding và BGE reranker local theo module RAG; LLM đi qua API/proxy cấu hình của người thực hiện.
+RAGAS và NeMo đã có artifacts thực nghiệm; lần C ban đầu chưa đạt clean controls, cần chạy lại sau sửa guard.
+Presidio được kiểm tra thực bằng tám clean inputs và bốn inputs chứa PII mẫu, không gọi API.
+Hai PDF scan ảnh đã bị loader bỏ qua do không có text layer; OCR chưa triển khai.
 
 ## INDIVIDUAL
 
-Sao chép mẫu cho mỗi thành viên; tiêu đề họ tên không dấu-MSSV.
+### PhamHoangTrong-2A202602765
 
-### {{HoVaTen}}-{{MSSV}}
-
-- Phần được giao và phần thực tế đã làm: {{Nhiệm vụ, file/hàm, mục đích}}.
-- Bằng chứng: {{Commit/PR và artifacts/reports liên quan}}.
-- Cách kiểm tra: {{Unit mock hoặc live experiment, lệnh và kết quả}}.
-- Điều đã học: {{Khái niệm và cách thể hiện trong bài}}.
-- Giới hạn/cách xử lý: {{Vấn đề và kiểm chứng}}.
-- Nguồn/AI hỗ trợ nếu có: {{Công cụ, phạm vi, cách tự kiểm chứng}}.
+- Phần thực hiện: copy module RAG Day 18, chuẩn bị dependencies/model/Docker, chạy generation và eval A/B/C, gửi lỗi thực tế để sửa, đối chiếu checker. Code tích hợp, guard và báo cáo có AI hỗ trợ.
+- Bằng chứng: `artifacts/answers_50q.json`, `ragas_50q.json`, `judge_results.json`, `guard_results.json`, source và báo cáo cùng repo. Chưa tuyên bố bản cuối đã nộp.
+- Cách kiểm tra: tests offline dùng SDK/rail mocks; artifacts live do người thực hiện chạy; checker validate schema/counts/hash/statistics. CP3 cần batch live mới sau sửa PII scope.
+- Nội dung đã đối chiếu: faithfulness khác recall/precision; worst-metric matrix không phải số câu thất bại; winner A/B khác binary label; swap cần đổi cả scores; latency input layers khác full request.
+- Giới hạn: 50/20/8/4 mẫu cố định, model/proxy alias chưa xác nhận snapshot; không suy kappa=1 thành judge đúng tuyệt đối. Budget vượt target và false positives phải ghi số thật.
+- AI hỗ trợ: Codex, Antigravity và Codex GPT-6 Luna high hỗ trợ đọc guide, implement/debug, kiểm chứng offline và soạn báo cáo từ JSON. Người thực hiện chạy lệnh live; đề xuất được đối chiếu bằng tests/artifacts/checker, không dùng lời báo hoàn thành làm bằng chứng đã chạy.
+- Nguồn: starter Day 24 và năm module từ bài RAG Day 18 của người thực hiện; giữ nguyên fixtures và policy cũ/mới.
 
 ## Cập nhật sau khi nộp
 
-{{Ghi phiên bản nộp; nếu sửa sau deadline, ghi commit/thời điểm/lý do và thông báo
-coach cho phép áp dụng bản cập nhật. Nếu không có cập nhật, ghi rõ không có.}}
+Chưa có bằng chứng nộp bài trong phiên hiện tại. Không khai thay đổi hiện tại là cập nhật sau nộp;
+nếu sửa sau deadline, ghi commit/thời điểm/lý do và áp dụng quyết định coach.
