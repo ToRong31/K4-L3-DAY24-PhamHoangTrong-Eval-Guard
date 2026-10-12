@@ -11,7 +11,10 @@ Deadline áp dụng: chưa có thông báo riêng của coach trong phiên làm 
 ASSIGNMENT/SUBMISSION/RULES nêu mặc định 23:59 ngày lab; README nêu một mốc khác.
 Cần đối chiếu thông báo coach trước gửi bài, không tự xác nhận deadline từ hai mốc mâu thuẫn.
 
-Commit dùng để chấm: chưa chốt vì CP3 còn cần chạy lại. Cập nhật SHA của bản cuối sau khi kiểm tra và commit, trước khi gửi link.
+Commit dùng để chấm: bản cuối trên nhánh `main` sau khi commit/push toàn bộ source, artifacts và báo cáo này.
+Commit source/artifacts đã kiểm tra trên remote: `72dfce0db5b59fea2353a207324f6083311f36e5`.
+Các cập nhật Markdown cuối cần được commit/push thêm; chưa tuyên bố bản cập nhật local này đã lên GitHub.
+Khi gửi link, đính kèm SHA lấy bằng `git rev-parse HEAD` sau khi commit và kiểm tra trên GitHub.
 
 ## Thành viên và phân công
 
@@ -30,7 +33,9 @@ Unit tests offline đã pass; kết quả cụ thể ghi trong kế hoạch hoà
 Qdrant khởi chạy bằng Docker Compose; pipeline đã sinh đủ 50 answers.
 Generation/evaluator/judge/guard IDs và timestamps lấy từ từng JSON, không gộp thành một model chung.
 BGE-M3 embedding và BGE reranker local theo module RAG; LLM đi qua API/proxy cấu hình của người thực hiện.
-RAGAS và NeMo đã có artifacts thực nghiệm; lần C ban đầu chưa đạt clean controls, cần chạy lại sau sửa guard.
+RAGAS và NeMo đã có artifacts thực nghiệm. Sau sửa guard, batch C cuối lúc
+2026-10-12T08:17:29.017518+00:00 đạt attacks 20/20, clean 8/8, outputs 4/4.
+Input-layer P95 là 850.107065 ms, vượt target 500 ms; giữ số thật, không suy ra full-request latency.
 Presidio được kiểm tra thực bằng tám clean inputs và bốn inputs chứa PII mẫu, không gọi API.
 Hai PDF scan ảnh đã bị loader bỏ qua do không có text layer; OCR chưa triển khai.
 
@@ -40,7 +45,7 @@ Hai PDF scan ảnh đã bị loader bỏ qua do không có text layer; OCR chưa
 
 - Phần thực hiện: copy module RAG Day 18, chuẩn bị dependencies/model/Docker, chạy generation và eval A/B/C, gửi lỗi thực tế để sửa, đối chiếu checker. Code tích hợp, guard và báo cáo có AI hỗ trợ.
 - Bằng chứng: `artifacts/answers_50q.json`, `ragas_50q.json`, `judge_results.json`, `guard_results.json`, source và báo cáo cùng repo. Chưa tuyên bố bản cuối đã nộp.
-- Cách kiểm tra: tests offline dùng SDK/rail mocks; artifacts live do người thực hiện chạy; checker validate schema/counts/hash/statistics. CP3 cần batch live mới sau sửa PII scope.
+- Cách kiểm tra: tests offline dùng SDK/rail mocks; artifacts live do người thực hiện chạy; checker validate schema/counts/hash/statistics. CP3 đã có batch live mới đạt 20/20 attacks, 8/8 clean và 4/4 outputs; checker cuối không còn lỗi.
 - Nội dung đã đối chiếu: faithfulness khác recall/precision; worst-metric matrix không phải số câu thất bại; winner A/B khác binary label; swap cần đổi cả scores; latency input layers khác full request.
 - Giới hạn: 50/20/8/4 mẫu cố định, model/proxy alias chưa xác nhận snapshot; không suy kappa=1 thành judge đúng tuyệt đối. Budget vượt target và false positives phải ghi số thật.
 - AI hỗ trợ: Codex, Antigravity và Codex GPT-6 Luna high hỗ trợ đọc guide, implement/debug, kiểm chứng offline và soạn báo cáo từ JSON. Người thực hiện chạy lệnh live; đề xuất được đối chiếu bằng tests/artifacts/checker, không dùng lời báo hoàn thành làm bằng chứng đã chạy.

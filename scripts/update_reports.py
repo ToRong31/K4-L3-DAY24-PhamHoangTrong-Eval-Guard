@@ -35,6 +35,9 @@ def write(name, text):
 
 
 def main():
+    team = (ROOT / "doc/TEAM.md").read_text(encoding="utf-8-sig")
+    group_name = next(line.split(":", 1)[1].strip() for line in team.splitlines()
+                      if line.startswith("Tên nhóm:"))
     answers, questions, humans = [read(p) for p in (
         "artifacts/answers_50q.json", "fixtures/test_set_50q.json", "fixtures/human_labels_10q.json")]
     a, b, c = [read("artifacts/" + p) for p in (
@@ -66,7 +69,7 @@ def main():
     write("failure_clusters.md", f"""
 # Phân tích lỗi Phase A
 
-Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: {group_name}. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Nguồn: `artifacts/ragas_50q.json`; timestamp UTC: {a['metadata']['created_at']}.
 50 answers gồm {modes['llm']} LLM và {modes['extractive_fallback']} extractive fallback.
 Generation: {models(a, 'generation')}. Evaluator: {models(a, 'evaluator')}.
@@ -132,7 +135,7 @@ Adversarial mean thấp hơn factual trong lần này, nhưng không đủ chứ
     write("bias_report.md", f"""
 # Đánh giá LLM Judge Phase B
 
-Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: {group_name}. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Nguồn: `artifacts/judge_results.json`; timestamp UTC: {b['metadata']['created_at']}.
 Generation: {models(b, 'generation')}; Judge: {models(b, 'judge')}.
 
@@ -194,7 +197,7 @@ Nếu thay answers nguồn, phải chạy lại B; nếu chỉ sửa validation 
     write("blueprint.md", f"""
 # Blueprint CI/CD cho RAG và guardrails
 
-Nhóm: PhamHoangTrong. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
+Nhóm: {group_name}. Người phụ trách: Phạm Hoàng Trọng — 2A202602765.
 Đây là đề xuất CI/CD, chưa có bằng chứng workflow được triển khai/chạy.
 Nguồn: `artifacts/ragas_50q.json`, `judge_results.json`, `guard_results.json`.
 Timestamp C UTC: {c['metadata']['created_at']}; guard models: {models(c, 'guard')}.
