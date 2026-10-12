@@ -11,10 +11,9 @@ Deadline theo hướng dẫn nộp bài người thực hiện cung cấp: 11:59
 Asia/Ho_Chi_Minh (UTC+07:00). Áp dụng điều chỉnh của key coach nếu có;
 kênh nộp và chính sách AI lấy từ thông báo lớp.
 
-Commit dùng để chấm: bản cuối trên nhánh `main` sau khi commit/push toàn bộ source, artifacts và báo cáo này.
-Commit source/evidence đã kiểm tra trên remote và mở public thành công: `1d04417eb82e229f23709780d23522b5938368bc`.
-Đổi tên nhóm và cập nhật thông tin nộp sau commit này chỉ thay Markdown; cần commit/push các cập nhật mới trước gửi link.
-Khi gửi link, đính kèm SHA lấy bằng `git rev-parse HEAD` sau khi commit và kiểm tra trên GitHub.
+Commit dùng để chấm: `c72cf86daef6e222dbb9ce7e4554b1839b9fa816`.
+SHA do người thực hiện cung cấp từ `git rev-parse HEAD`, gồm source, artifacts và báo cáo của nhóm PhamHoangTrong.
+Commit bổ sung dòng ghi nhận SHA này chỉ cập nhật thông tin bàn giao; khi nộp gửi link repo kèm SHA dùng để chấm ở trên.
 
 ## Thành viên và phân công
 
